@@ -2,6 +2,8 @@ package Animal;
 
 import Displayable.displayable;
 
+import java.awt.*;
+
 public class rabbit extends animal implements displayable
 {
     private int ageLimit;
@@ -22,5 +24,10 @@ public class rabbit extends animal implements displayable
 
     public String returnColor(){
         return "r";
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.RED;
     }
 }

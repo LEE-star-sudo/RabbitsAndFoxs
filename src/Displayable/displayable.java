@@ -6,4 +6,5 @@ public interface displayable
     public void eat();
     public void died();
     public String returnColor();
+    public abstract java.awt.Color getColor();
 }

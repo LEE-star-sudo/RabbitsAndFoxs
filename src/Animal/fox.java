@@ -2,6 +2,8 @@ package Animal;
 
 import Displayable.displayable;
 
+import java.awt.*;
+
 public class fox extends animal implements displayable
 {
     private int ageLimit;
@@ -25,6 +27,11 @@ public class fox extends animal implements displayable
 
     public String returnColor(){
         return "F";
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.BLACK;
     }
 
 //    public String toString(){
