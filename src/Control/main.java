@@ -6,7 +6,10 @@ import Field.field;
 import Displayable.displayable;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
+import javax.swing.Timer;
 
 //Control section
 public class main
@@ -39,7 +42,16 @@ public class main
                 }
             }
         }
+
+        Timer timer = new Timer(1000,new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.updateGame();
+            }
+        });
+        timer.start();
     }
+
     public static void main(String[] args) {
         main start = new main();
         start.InitializingGame();

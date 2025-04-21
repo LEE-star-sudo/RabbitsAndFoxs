@@ -2,7 +2,6 @@ package FieldView;
 
 import javax.swing.*;
 import java.awt.*;
-
 import Displayable.displayable;
 import Field.field;
 

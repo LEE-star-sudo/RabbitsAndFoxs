@@ -19,10 +19,8 @@ public class fox extends animal implements displayable
         super.grow(age);
     }
 
-    public void eat(){}
+    public void eat(){
 
-    public void died(){
-        super.died();
     }
 
     public String returnColor(){
@@ -33,8 +31,4 @@ public class fox extends animal implements displayable
     public Color getColor() {
         return Color.BLACK;
     }
-
-//    public String toString(){
-//        return super.toString();
-//    }
 }

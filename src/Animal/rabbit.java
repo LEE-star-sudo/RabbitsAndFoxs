@@ -26,6 +26,7 @@ public class rabbit extends animal implements displayable
         return "r";
     }
 
+
     @Override
     public Color getColor() {
         return Color.RED;

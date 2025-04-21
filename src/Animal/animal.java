@@ -22,22 +22,21 @@ public class animal implements displayable
         this.isLive = isLive;
     }
 
+    public int returnAge() {
+        return age;
+    }
+
+    public int getAgeLimit() {
+        return ageLimit;
+    }
+
     //Behavioral functions of animals
     public void grow(int age){
-        if(age < ageLimit){
-            age++;
-        }
-        else{
-            died();
-        }
+        age++;
     }
 
     @Override
     public void eat() {}
-
-    public void died(){
-        isLive = false;
-    }
 
     public String returnColor(){
         return null;
