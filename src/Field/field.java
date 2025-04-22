@@ -47,7 +47,7 @@ public class field
                     else if (object[i][j] instanceof fox)
                     {
                         fox f = (fox) object[i][j];
-                        f.eat();
+                        f.eat(object, i, j);
                         if(f.returnAge() > f.getAgeLimit())
                         {
                             object[i][j] = null;

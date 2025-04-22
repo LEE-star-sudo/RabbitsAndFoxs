@@ -31,7 +31,7 @@ public class animal implements displayable
     }
 
     //Behavioral functions of animals
-    public void grow(int age){
+    public void grow(){
         age++;
     }
 

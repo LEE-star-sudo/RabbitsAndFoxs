@@ -18,10 +18,6 @@ public class rabbit extends animal implements displayable
 
     }
 
-    public void died(){
-        super.died();
-    }
-
     public String returnColor(){
         return "r";
     }
