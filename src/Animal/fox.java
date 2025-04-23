@@ -8,17 +8,10 @@ import java.util.Random;
 
 public class fox extends animal implements displayable
 {
-    private int ageLimit;
-    private boolean isLive;
-    private int age;
 
     public fox(int age,boolean isLive,int ageLimit)
     {
         super(age,isLive,ageLimit);
-    }
-
-    public void grow(){
-
     }
 
     public void eat(displayable[][] map, int x, int y)

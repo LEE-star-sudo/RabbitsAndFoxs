@@ -20,6 +20,7 @@ public class animal implements displayable
     public animal(int age, boolean isLive,int ageLimit) {
         this.age = age;
         this.isLive = isLive;
+        this.ageLimit = ageLimit;
     }
 
     public int returnAge() {
