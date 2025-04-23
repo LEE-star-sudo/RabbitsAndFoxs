@@ -28,6 +28,7 @@ public class field
     }
 
     public void updateGame() {
+        boolean animalFlag = false;
         for (int i = 0; i < 90; i++)
         {
             for (int j = 0; j < 90; j++)
@@ -42,22 +43,29 @@ public class field
                             object[i][j] = null;
                             continue;
                         }
+                        animalFlag = true;
                         object[i][j] = r;
                     }
                     else if (object[i][j] instanceof fox)
                     {
                         fox f = (fox) object[i][j];
                         f.eat(object, i, j);
+                        f.grow();
                         if(f.returnAge() > f.getAgeLimit())
                         {
                             object[i][j] = null;
                             continue;
                         }
+                        animalFlag = true;
                         object[i][j] = f;
                     }
                 }
             }
         }
         fv.setObject(object);
+        if(!animalFlag){
+            javax.swing.JOptionPane.showMessageDialog(null,"This game is over!");
+            System.exit(0);
+        }
     }
 }

@@ -6,6 +6,7 @@ import Field.field;
 import Displayable.displayable;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -22,6 +23,15 @@ public class main
         frame.setTitle("Animal");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(f.getView());
+        JButton stepButton = new JButton("Step");
+        //add button
+        stepButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.updateGame();
+            }
+        });
+        frame.add(stepButton, BorderLayout.NORTH);
         frame.pack();
         frame.setVisible(true);
 
@@ -43,13 +53,13 @@ public class main
             }
         }
 
-        Timer timer = new Timer(1000,new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                f.updateGame();
-            }
-        });
-        timer.start();
+//        Timer timer = new Timer(1000,new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                f.updateGame();
+//            }
+//        });
+//        timer.start();
     }
 
     public static void main(String[] args) {
