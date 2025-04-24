@@ -108,7 +108,7 @@ public class main
     //Initialization function.
     public void initializingGame()
     {
-        String[] options = {"play","exit"};
+        String[] options = {"play","exit","instructions"};
         choice = JOptionPane.showOptionDialog(null,
                 "Welcome to the game of animals !",
                 "Welcome",
@@ -125,7 +125,16 @@ public class main
         } else if (choice == 1)
         {
             System.exit(0);
+        } else if (choice == 2) {
+            showInstructions();
+            InitializeDialogBox();
+            setButton();
         }
+    }
+
+    private void showInstructions() {
+        String message = "游戏说明“：";
+        JOptionPane.showMessageDialog(null, message,"游戏说明",JOptionPane.QUESTION_MESSAGE);
     }
 
     public static void main(String[] args) {
