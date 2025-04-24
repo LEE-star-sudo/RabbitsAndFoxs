@@ -17,6 +17,8 @@ public class main
     private JFrame frame;
     private JButton stepButton;
     private JButton startButton;
+    private JButton resetButton;
+    private JButton exitButton;
     private JPanel buttonPanel;
     private Random rand;
     private double chance;
@@ -29,6 +31,8 @@ public class main
         rand = new Random();
         stepButton = new JButton("Step");
         startButton = new JButton("Start");
+        resetButton = new JButton("Reset");
+        exitButton = new JButton("Exit");
         buttonPanel = new JPanel();
     }
 
@@ -44,23 +48,42 @@ public class main
         //Create button
         buttonPanel.add(startButton);
         buttonPanel.add(stepButton);
+        buttonPanel.add(resetButton);
+        buttonPanel.add(exitButton);
         frame.add(buttonPanel, BorderLayout.NORTH);
     }
 
     //设置按钮
     public void setButton()
     {
+        stepButton.setVisible(false);
+        resetButton.setVisible(false);
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 startButton.setVisible(false);
-                //add button
+                stepButton.setVisible(true);
+                resetButton.setVisible(true);
+                generateAnimals();
                 stepButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         f.updateGame();
                     }
                 });
+                resetButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        generateAnimals();
+                        f.updateGame();
+                    }
+                });
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
             }
         });
     }
@@ -85,7 +108,7 @@ public class main
     //Initialization function.
     public void initializingGame()
     {
-        String[] options = {"start","exit"};
+        String[] options = {"play","exit"};
         choice = JOptionPane.showOptionDialog(null,
                 "Welcome to the game of animals !",
                 "Welcome",
@@ -98,7 +121,6 @@ public class main
         if(choice == 0)
         {
             InitializeDialogBox();
-            generateAnimals();
             setButton();
         } else if (choice == 1)
         {
