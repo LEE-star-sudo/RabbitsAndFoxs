@@ -41,12 +41,16 @@ public class fox extends animal implements displayable
         }
     }
 
-    public String returnColor(){
-        return "F";
-    }
-
     @Override
     public Color getColor() {
+        if(super.returnAge() == 2)
+        {
+            return Color.GRAY;
+        }
+        if(super.returnAge() == 3)
+        {
+            return Color.green;
+        }
         return Color.BLACK;
     }
 }

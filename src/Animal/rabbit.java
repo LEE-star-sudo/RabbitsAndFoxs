@@ -17,6 +17,14 @@ public class rabbit extends animal implements displayable
 
     @Override
     public Color getColor() {
+        if(super.returnAge() == 2)
+        {
+            return Color.ORANGE;
+        }
+        if(super.returnAge() == 3)
+        {
+            return Color.yellow;
+        }
         return Color.RED;
     }
 }
