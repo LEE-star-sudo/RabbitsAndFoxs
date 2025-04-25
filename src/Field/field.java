@@ -4,6 +4,8 @@ import Displayable.displayable;
 import FieldView.fieldView;
 import Animal.fox;
 
+import java.util.Random;
+
 //The data part of the whole game
 public class field
 {
@@ -27,8 +29,23 @@ public class field
         return fv;
     }
 
+    public void generateRabbitAndFox(int x, int y)
+    {
+        Random rand = new Random();
+        double chance = rand.nextDouble();
+        if(chance < 0.3)
+        {
+            fox f = new fox(1,true,3);
+            object[x][y] = f;
+        } else if (chance < 0.6) {
+            rabbit r = new rabbit(1,true,3);
+            object[x][y] = r;
+        }else{
+            object [x][y] = null;
+        }
+    }
+
     public void updateGame() {
-        boolean animalFlag = false;
         for (int i = 0; i < 90; i++)
         {
             for (int j = 0; j < 90; j++)
@@ -43,7 +60,6 @@ public class field
                             object[i][j] = null;
                             continue;
                         }
-                        animalFlag = true;
                         object[i][j] = r;
                     }
                     else if (object[i][j] instanceof fox)
@@ -56,16 +72,21 @@ public class field
                             object[i][j] = null;
                             continue;
                         }
-                        animalFlag = true;
                         object[i][j] = f;
                     }
                 }
             }
         }
-        fv.setObject(object);
-        if(!animalFlag){
-            javax.swing.JOptionPane.showMessageDialog(null,"This game is over!");
-            System.exit(0);
+        for(int i = 0;i < 90;i++)
+        {
+            for(int j = 0;j < 90;j++)
+            {
+                if(object[i][j] == null)
+                {
+                    generateRabbitAndFox(i,j);
+                }
+            }
         }
+        fv.setObject(object);
     }
 }
