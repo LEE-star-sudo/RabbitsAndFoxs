@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class rabbit extends animal implements displayable
 {
-    public rabbit(int age, boolean isLive,int ageLimit) {
-        super(age, isLive,ageLimit);
+    public rabbit(int age, boolean isLive,int ageLimit,int locX,int locY) {
+        super(age, isLive,ageLimit,locX,locY);
     }
 
     public String returnColor(){

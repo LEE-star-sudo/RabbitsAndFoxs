@@ -95,10 +95,10 @@ public class main
             for (int y = 0; y < 90; y++) {
                 chance = rand.nextDouble();
                 if (chance < 0.3) {
-                    displayable fox = new fox(1, true, 3);
+                    displayable fox = new fox(1, true, 3,x,y);
                     f.InitializingObject(x, y, fox);
                 } else if (chance < 0.4) {
-                    displayable rabbit = new rabbit(1, true, 3);
+                    displayable rabbit = new rabbit(1, true, 3,x,y);
                     f.InitializingObject(x, y, rabbit);
                 }
             }

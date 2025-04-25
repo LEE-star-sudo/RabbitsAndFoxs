@@ -9,9 +9,9 @@ import java.util.Random;
 public class fox extends animal implements displayable
 {
 
-    public fox(int age,boolean isLive,int ageLimit)
+    public fox(int age,boolean isLive,int ageLimit,int locX,int locY)
     {
-        super(age,isLive,ageLimit);
+        super(age,isLive,ageLimit,locX,locY);
     }
 
     public void eat(displayable[][] map, int x, int y)

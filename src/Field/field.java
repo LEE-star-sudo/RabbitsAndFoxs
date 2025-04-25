@@ -1,15 +1,19 @@
 package Field;
+import Animal.animal;
 import Animal.rabbit;
 import Displayable.displayable;
 import FieldView.fieldView;
 import Animal.fox;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 //The data part of the whole game
 public class field
 {
     private final displayable[][] object = new displayable[90][90];
+    private final ArrayList<animal> temp_animals = new ArrayList<>();
     fieldView fv;
 
     public field()
@@ -21,6 +25,7 @@ public class field
     public void InitializingObject(int x, int y,displayable animal)
     {
         object[x][y] = animal;
+        temp_animals.add((animal) animal);
         fv.setObject(object);
     }
 
@@ -31,50 +36,39 @@ public class field
 
     public void generateRabbitAndFox(int x, int y)
     {
+        animal a = null;
         Random rand = new Random();
         double chance = rand.nextDouble();
         if(chance < 0.3)
         {
-            fox f = new fox(1,true,3);
-            object[x][y] = f;
+            a = new fox(1,true,3,x,y);
+            temp_animals.add(a);
+            object[x][y] = a;
         } else if (chance < 0.6) {
-            rabbit r = new rabbit(1,true,3);
-            object[x][y] = r;
+            a = new rabbit(1,true,3,x,y);
+            temp_animals.add(a);
+            object[x][y] = a;
         }else{
-            object [x][y] = null;
+            object[x][y] = null;
         }
     }
 
     public void updateGame() {
-        for (int i = 0; i < 90; i++)
-        {
-            for (int j = 0; j < 90; j++)
-            {
-                if (object[i][j] != null) {
-                    if(object[i][j] instanceof rabbit)
-                    {
-                        rabbit r = (rabbit) object[i][j];
-                        r.grow();
-                        if(r.returnAge() > r.getAgeLimit())
-                        {
-                            object[i][j] = null;
-                            continue;
-                        }
-                        object[i][j] = r;
-                    }
-                    else if (object[i][j] instanceof fox)
-                    {
-                        fox f = (fox) object[i][j];
-                        f.eat(object, i, j);
-                        f.grow();
-                        if(f.returnAge() > f.getAgeLimit())
-                        {
-                            object[i][j] = null;
-                            continue;
-                        }
-                        object[i][j] = f;
-                    }
-                }
+        Iterator<animal> it = temp_animals.iterator();
+        while(it.hasNext()) {
+            animal animal = it.next();
+            if(animal instanceof rabbit) {
+                animal.grow();
+            } else if (animal instanceof fox) {
+                animal.eat();
+                animal.grow();
+            }
+
+            if(animal.returnAge() > animal.getAgeLimit()) {
+                object[animal.returnLocation()[0]][animal.returnLocation()[1]] = null;
+                it.remove();
+            }else{
+                object[animal.returnLocation()[0]][animal.returnLocation()[1]] = animal;
             }
         }
         for(int i = 0;i < 90;i++)

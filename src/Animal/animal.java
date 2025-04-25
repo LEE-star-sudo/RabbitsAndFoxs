@@ -15,12 +15,16 @@ public class animal implements displayable
     private int age;
     private boolean isLive;
     private int ageLimit;
+    private int locX;
+    private int locY;
 
     //Constructor
-    public animal(int age, boolean isLive,int ageLimit) {
+    public animal(int age, boolean isLive,int ageLimit,int locX,int locY) {
         this.age = age;
         this.isLive = isLive;
         this.ageLimit = ageLimit;
+        this.locX = locX;
+        this.locY = locY;
     }
 
     public int returnAge() {
@@ -50,5 +54,9 @@ public class animal implements displayable
 
     public String toString(){
         return this.getClass().getSimpleName();
+    }
+
+    public int[] returnLocation(){
+        return new int[]{locX,locY};
     }
 }
