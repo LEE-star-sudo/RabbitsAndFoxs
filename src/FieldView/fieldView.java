@@ -16,6 +16,8 @@ public class fieldView extends JPanel
     private static final int GRID_WIDTH = 90;
     private static final int GRID_HEIGHT = 90;
     private static final int CELL_SIZE = 15;
+    private static final int WINDOW_OFFSET_X = 10;
+    private static final int WINDOW_OFFSET_Y = 10;
     private displayable objects[][];
     private int hoveredX;
     private int hoveredY;
@@ -60,7 +62,7 @@ public class fieldView extends JPanel
                     if(temp != null){
                         label.setText(temp.getClass().getSimpleName() + "\n" + "  " + "Age is " + temp.returnAge());
                         Point screenPoint = e.getLocationOnScreen();
-                        window.setLocation(screenPoint.x + 10, screenPoint.y + 10);
+                        window.setLocation(screenPoint.x + WINDOW_OFFSET_X, screenPoint.y + WINDOW_OFFSET_Y);
                         window.setVisible(true);
                     }else {
                         window.setVisible(false);
@@ -91,8 +93,10 @@ public class fieldView extends JPanel
 
     public void setObject(displayable[][] objects)
     {
-        this.objects = objects;
-        repaint();
+        if(objects != null)
+        {   this.objects = objects;
+            repaint();
+        }
     }
 
 
