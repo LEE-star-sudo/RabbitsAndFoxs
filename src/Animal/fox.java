@@ -49,7 +49,7 @@ public class fox extends animal implements displayable
         }
         if(super.returnAge() == 3)
         {
-            return Color.green;
+            return Color.GREEN;
         }
         return Color.BLACK;
     }
