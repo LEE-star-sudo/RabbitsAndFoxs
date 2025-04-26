@@ -64,7 +64,7 @@ public class main
                 startButton.setVisible(false);
                 stepButton.setVisible(true);
                 resetButton.setVisible(true);
-                generateAnimals();
+                f.generateAnimals();
                 stepButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -74,7 +74,7 @@ public class main
                 resetButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        generateAnimals();
+                        f.generateAnimals();
                         f.updateGame();
                     }
                 });
@@ -88,24 +88,7 @@ public class main
         });
     }
 
-    //随机生成动物
-    public void generateAnimals()
-    {
-        for (int x = 0; x < 90; x++) {
-            for (int y = 0; y < 90; y++) {
-                chance = rand.nextDouble();
-                if (chance < 0.3) {
-                    displayable fox = new fox(1, true, 3,x,y);
-                    f.InitializingObject(x, y, fox);
-                } else if (chance < 0.4) {
-                    displayable rabbit = new rabbit(1, true, 3,x,y);
-                    f.InitializingObject(x, y, rabbit);
-                }
-            }
-        }
-    }
-
-    //Initialization function.
+    //主界面逻辑
     public void initializingGame()
     {
         String[] options = {"play","exit","instructions"};

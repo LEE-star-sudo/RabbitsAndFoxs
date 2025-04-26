@@ -14,6 +14,7 @@ public class field
 {
     private final displayable[][] object = new displayable[90][90];
     private final ArrayList<animal> temp_animals = new ArrayList<>();
+    private double chance;
     fieldView fv;
 
     public field()
@@ -50,6 +51,23 @@ public class field
             object[x][y] = a;
         }else{
             object[x][y] = null;
+        }
+    }
+
+    public void generateAnimals()
+    {
+        for (int x = 0; x < 90; x++) {
+            for (int y = 0; y < 90; y++) {
+                Random rand = new Random();
+                chance = rand.nextDouble();
+                if (chance < 0.3) {
+                    displayable fox = new fox(1, true, 3,x,y);
+                    InitializingObject(x, y, fox);
+                } else if (chance < 0.4) {
+                    displayable rabbit = new rabbit(1, true, 3,x,y);
+                    InitializingObject(x, y, rabbit);
+                }
+            }
         }
     }
 
